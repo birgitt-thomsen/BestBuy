@@ -60,7 +60,16 @@ def make_order(store):
     """ Displays products available in store, takes order from user and makes
     order, showing the order total. Catches ValueError when item entered is
     not valid or when order quantity exceeds available quantity"""
-    list_products(store)
+
+    # print product list
+    options = store.get_all_products()
+
+    print("------")
+    for index, product in enumerate(options, start=1):
+        print(f"{index}. ", end="")
+        product.show()
+    print("------")
+
     print("When you want to finish order, enter empty text.")
 
     available_products = store.get_all_products()
