@@ -4,6 +4,7 @@ buy a certain quantity."""
 class Product:
     """ Creates a class product to handles everything about a single product"""
 
+
     def __init__(self, name, price, quantity):
         """
         Initialize a product with a name, price, and quantity.
@@ -24,9 +25,11 @@ class Product:
         self.quantity = quantity
         self.active = True
 
+
     def get_quantity(self):
         """ Returns the quantity of the product """
         return self.quantity
+
 
     def set_quantity(self, quantity):
         """ Sets the quantity of the product. Raises ValueError if the
@@ -41,21 +44,26 @@ class Product:
         else:
             self.activate()
 
+
     def is_active(self):
         """ Returns whether the product is active """
         return self.active
+
 
     def activate(self):
         """ Activates the product """
         self.active = True
 
+
     def deactivate(self):
         """ Deactivates the product """
         self.active = False
 
+
     def show(self):
         """ Prints the product details"""
         print(f"{self.name}, Price: {self.price}, Quantity: {self.quantity}")
+
 
     def buy(self, quantity):
         """ Buys the product and updates the quantity. Raises ValueError
@@ -66,4 +74,3 @@ class Product:
         self.set_quantity(self.quantity - quantity)
 
         return float(quantity * self.price)
-
