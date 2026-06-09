@@ -12,7 +12,7 @@ product_list = [ products.Product("MacBook Air M2", price=1450, quantity=100),
 best_buy = store.Store(product_list)
 
 
-def start(store):
+def start(store_name):
     """ Starts the program by showing menu and taking user input, calling the
     respective functions to execute user selections"""
     while True:
@@ -26,13 +26,13 @@ def start(store):
         choice = input("Please choose a number: ")
 
         if choice == "1":
-            list_products(store)
+            list_products(store_name)
 
         elif choice == "2":
-            show_total_quantity(store)
+            show_total_quantity(store_name)
 
         elif choice == "3":
-            make_order(store)
+            make_order(store_name)
 
         elif choice == "4":
             break
@@ -41,28 +41,28 @@ def start(store):
             print("Invalid choice")
 
 
-def list_products(store):
+def list_products(store_name):
     """ List all products in store"""
     # print("Listing products...")
-    store.get_all_products()
+    store_name.get_all_products()
     print("------")
-    for product in store.get_all_products():
+    for product in store_name.get_all_products():
         product.show()
     print("------")
 
 
-def show_total_quantity(store):
+def show_total_quantity(store_name):
     """ Show total quantity in store"""
-    print(f"Total of {store.get_total_quantity()} items in store")
+    print(f"Total of {store_name.get_total_quantity()} items in store")
 
 
-def make_order(store):
+def make_order(store_name):
     """ Displays products available in store, takes order from user and makes
     order, showing the order total. Catches ValueError when item entered is
     not valid or when order quantity exceeds available quantity"""
 
     # print product list
-    options = store.get_all_products()
+    options = store_name.get_all_products()
 
     print("------")
     for index, product in enumerate(options, start=1):
@@ -72,7 +72,7 @@ def make_order(store):
 
     print("When you want to finish order, enter empty text.")
 
-    available_products = store.get_all_products()
+    available_products = store_name.get_all_products()
     shopping_list = []
 
     while True:
@@ -90,7 +90,7 @@ def make_order(store):
             print("Error adding product!\n")
 
     try:
-        total_price = store.order(shopping_list)
+        total_price = store_name.order(shopping_list)
         print(f"Order made! Total payment: ${total_price}")
     except ValueError:
         print("Error while making order! Quantity larger than what exists")
